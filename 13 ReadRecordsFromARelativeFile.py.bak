@@ -1,0 +1,23 @@
+def ReadRecordsFromARelativeFile():
+    with open("ProductData", "r") as fp:
+        ProductData = fp.readlines()
+
+    tmplist = []
+    for i in ProductData:
+        split_data = i.split('\t')
+        tmplist.append(split_data)
+        print(i)
+
+    ProductData=tmplist
+    print(ProductData)
+    RequiredProdNumber = input("Please enter the product number for the next product you wish to see: ")
+
+    while RequiredProdNumber != "999":
+        #try:
+        ProductIndex = ProductData.index(RequiredProdNumber)
+        print(ProductData[ProductIndex][0] + ": " + ProductData[ProductIndex][1])
+        #except ValueError:
+        #    print("Sorry - no such product.")
+
+        RequiredProdNumber = input("Please enter the product number for the next product you wish to see: ")
+ReadRecordsFromARelativeFile()
